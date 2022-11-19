@@ -1,0 +1,41 @@
+openapi: 3.1.0
+info:
+    title: Articles API
+    description: |
+        This API allows user to create, read, update, and delete Articles
+    version: 1.0.0
+
+paths:
+    /articles:
+        post:
+            summary: Create an Article
+            responses:
+                "201":
+                    description: "CREATED"
+                    content:
+                        application/json:
+                            schema:
+                                $ref: "#/components/schemas/article"
+        get:
+            summary: Gets the list of articles in the system
+            responses:
+                "200":
+                    description: "OK"
+                    content:
+                        application/json:
+                            schema:
+                                $ref: "#/components/schemas/article-list"
+    /articles/{article-uuid}:
+        get:
+            summary: Gets the article content with the article's content
+            responses:
+                "200":
+                    description: "OK"
+                    content:
+                        application/json:
+                            schema:
+                                $ref: "#components/schemas/article"
+                "400":
+                    description: Provided parameters are incorrect
+        put:
+        delete:
